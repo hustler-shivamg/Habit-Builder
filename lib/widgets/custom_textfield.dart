@@ -7,7 +7,7 @@ import 'package:habit_builder/values/text_styles.dart';
 class CustomTextfield extends StatefulWidget {
   FocusNode focusNode;
   final bool isPassword;
-  bool? showPassword;
+  bool showPassword = false;
   final String prefixImage;
   final String hintText;
   final Color bgColor;
@@ -17,7 +17,7 @@ class CustomTextfield extends StatefulWidget {
     Key? key,
     required this.focusNode,
     required this.isPassword,
-    this.showPassword,
+    required this.showPassword,
     required this.prefixImage,
     required this.bgColor,
     required this.textInputType,
@@ -48,25 +48,30 @@ class _CustomTextfieldState extends State<CustomTextfield> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            SvgPicture.asset(
-              widget.prefixImage,
-              color: widget.textEditingController.text.isEmpty
-                  ? widget.focusNode.hasFocus
-                      ? AppColors.darkOrange
-                      : AppColors.darkTheme
-                  : AppColors.darkOrange,
-            ),
-            SizedBox(
-              width: 16.w,
-            ),
-            Container(
-              // height: double.infinity,
-              width: 1.w,
-              color: AppColors.primaryBg,
-            ),
-            SizedBox(
-              width: 16.w,
-            ),
+            if (widget.prefixImage.isNotEmpty)
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    widget.prefixImage,
+                    color: widget.textEditingController.text.isEmpty
+                        ? widget.focusNode.hasFocus
+                            ? AppColors.darkOrange
+                            : AppColors.darkTheme
+                        : AppColors.darkOrange,
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                  Container(
+                    // height: double.infinity,
+                    width: 1.w,
+                    color: AppColors.primaryBg,
+                  ),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                ],
+              ),
             Expanded(
               child: Focus(
                 onFocusChange: (hasFocus) {
@@ -88,7 +93,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                     widget.focusNode.requestFocus();
                     setState(() {});
                   },
-                  obscureText: !(widget.showPassword ?? false),
+                  obscureText: widget.showPassword,
                   keyboardType: widget.textInputType,
                   decoration: InputDecoration.collapsed(
                     hintText: widget.hintText,
@@ -113,7 +118,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                     style: ManropeMedium.copyWith(
                       fontSize: 14.sp,
                       color: AppColors.darkTheme,
-                      decoration: widget.showPassword ?? false ? TextDecoration.lineThrough : TextDecoration.none,
+                      decoration: !widget.showPassword ? TextDecoration.lineThrough : TextDecoration.none,
                     ),
                   ),
                 ),

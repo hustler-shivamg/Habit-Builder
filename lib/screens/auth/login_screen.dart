@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:habit_builder/screens/auth/forgot_password.dart';
 import 'package:habit_builder/screens/auth/signup_screen.dart';
 import 'package:habit_builder/values/app_colors.dart';
 import 'package:habit_builder/values/text_styles.dart';
+import 'package:habit_builder/widgets/custom_submitbutton.dart';
 import 'package:habit_builder/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -14,7 +16,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool showPassword = false;
   var emailFocusNode = FocusNode();
   var passFocusNode = FocusNode();
   TextEditingController emailController = TextEditingController();
@@ -174,63 +175,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: EdgeInsets.symmetric(horizontal: 20.w),
                             child: Column(
                               children: [
-                                // GestureDetector(
-                                //   onTap: () {
-                                //     emailFocusNode.requestFocus();
-                                //     setState(() {});
-                                //   },
-                                //   child: Container(
-                                //     height: 56.h,
-                                //     padding: EdgeInsets.symmetric(horizontal: 17.w),
-                                //     // padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 17.w),
-                                //     decoration: BoxDecoration(
-                                //       borderRadius: BorderRadius.circular(12.r),
-                                //       color: AppColors.orange,
-                                //     ),
-                                //     child: Row(
-                                //       mainAxisAlignment: MainAxisAlignment.start,
-                                //       children: [
-                                //         SvgPicture.asset(
-                                //           "assets/images/mail.svg",
-                                //           color: emailFocusNode.hasFocus ? AppColors.darkOrange : AppColors.darkTheme,
-                                //         ),
-                                //         SizedBox(
-                                //           width: 16.w,
-                                //         ),
-                                //         Container(
-                                //           // height: double.infinity,
-                                //           width: 1.w,
-                                //           color: AppColors.primaryBg,
-                                //         ),
-                                //         SizedBox(
-                                //           width: 16.w,
-                                //         ),
-                                //         Expanded(
-                                //           child: TextField(
-                                //             style: ManropeSemiBold.copyWith(
-                                //               fontSize: 16.sp,
-                                //               color: AppColors.darkOrange,
-                                //             ),
-                                //             keyboardType: TextInputType.emailAddress,
-                                //             onTap: () {
-                                //               emailFocusNode.requestFocus();
-                                //               setState(() {});
-                                //             },
-                                //             focusNode: emailFocusNode,
-                                //             cursorColor: AppColors.darkTheme,
-                                //             decoration: InputDecoration.collapsed(
-                                //               hintText: "Email",
-                                //               hintStyle: ManropeMedium.copyWith(
-                                //                 fontSize: 16.sp,
-                                //                 color: AppColors.darkTheme,
-                                //               ),
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // ),
                                 CustomTextfield(
                                   focusNode: emailFocusNode,
                                   isPassword: false,
@@ -244,81 +188,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(
                                   height: 8.h,
                                 ),
-                                // GestureDetector(
-                                //   onTap: () {
-                                //     passFocusNode.requestFocus();
-                                //     setState(() {});
-                                //   },
-                                //   child: Container(
-                                //     height: 56.h,
-                                //     padding: EdgeInsets.symmetric(horizontal: 19.w),
-                                //     // padding: EdgeInsets.symmetric(vertical: 22.h, horizontal: 19.w),
-                                //     decoration: BoxDecoration(
-                                //       borderRadius: BorderRadius.circular(12.r),
-                                //       color: AppColors.orange,
-                                //     ),
-                                //     child: Row(
-                                //       mainAxisAlignment: MainAxisAlignment.start,
-                                //       children: [
-                                //         SvgPicture.asset(
-                                //           "assets/images/lock.svg",
-                                //           color: passFocusNode.hasFocus ? AppColors.darkOrange : AppColors.darkTheme,
-                                //         ),
-                                //         SizedBox(
-                                //           width: 16.w,
-                                //         ),
-                                //         Container(
-                                //           // height: double.infinity,
-                                //           width: 1.w,
-                                //           color: AppColors.primaryBg,
-                                //         ),
-                                //         SizedBox(
-                                //           width: 16.w,
-                                //         ),
-                                //         Expanded(
-                                //           child: TextField(
-                                //             style: ManropeSemiBold.copyWith(
-                                //               fontSize: 16.sp,
-                                //               color: AppColors.darkOrange,
-                                //             ),
-                                //             focusNode: passFocusNode,
-                                //             cursorColor: AppColors.darkTheme,
-                                //             onTap: () {
-                                //               passFocusNode.requestFocus();
-                                //               setState(() {});
-                                //             },
-                                //             obscureText: !showPassword,
-                                //             keyboardType: TextInputType.visiblePassword,
-                                //             decoration: InputDecoration.collapsed(
-                                //               hintText: "Password",
-                                //               hintStyle: ManropeMedium.copyWith(
-                                //                 fontSize: 16.sp,
-                                //                 color: AppColors.darkTheme,
-                                //               ),
-                                //             ),
-                                //           ),
-                                //         ),
-                                //         InkWell(
-                                //           onTap: () {
-                                //             showPassword = !showPassword;
-                                //             setState(() {});
-                                //           },
-                                //           child: Container(
-                                //             color: Colors.transparent,
-                                //             child: Text(
-                                //               "Show",
-                                //               style: ManropeMedium.copyWith(
-                                //                 fontSize: 14.sp,
-                                //                 color: AppColors.darkTheme,
-                                //                 decoration: showPassword ? TextDecoration.lineThrough : TextDecoration.none,
-                                //               ),
-                                //             ),
-                                //           ),
-                                //         ),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // ),
                                 CustomTextfield(
                                   focusNode: passFocusNode,
                                   isPassword: true,
@@ -327,37 +196,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                   textInputType: TextInputType.visiblePassword,
                                   hintText: 'Password',
                                   textEditingController: passController,
-                                  showPassword: false,
+                                  showPassword: true,
                                 ),
                                 SizedBox(
                                   height: 21.h,
                                 ),
-                                Container(
-                                  height: 60.h,
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8.r),
-                                    color: AppColors.darkOrange,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Login",
-                                      style: ManropeSemiBold.copyWith(
-                                        fontSize: 16.sp,
-                                        color: AppColors.darkTheme,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                const CustomSubmitButton(text: "Login"),
                                 SizedBox(
                                   height: 15.h,
                                 ),
-                                Text(
-                                  "Forgot Password?",
-                                  style: ManropeMedium.copyWith(
-                                    fontSize: 14.sp,
-                                    color: AppColors.darkTheme,
-                                    decoration: TextDecoration.underline,
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ForgotPasswordScreen()));
+                                  },
+                                  child: Text(
+                                    "Forgot Password?",
+                                    style: ManropeMedium.copyWith(
+                                      fontSize: 14.sp,
+                                      color: AppColors.darkTheme,
+                                      decoration: TextDecoration.underline,
+                                    ),
                                   ),
                                 ),
                                 SizedBox(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:habit_builder/screens/auth/login_screen.dart';
+import 'package:habit_builder/screens/intro_screens.dart';
 import 'package:habit_builder/values/app_colors.dart';
 import 'package:habit_builder/values/text_styles.dart';
 
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 3),
       () {
-        Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginScreen()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const IntroductionScreens()));
       },
     );
   }
