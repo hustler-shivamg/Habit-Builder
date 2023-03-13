@@ -13,6 +13,8 @@ class CustomTextfield extends StatefulWidget {
   final Color bgColor;
   final TextInputType textInputType;
   final TextEditingController textEditingController;
+  final TextStyle? style;
+  final TextStyle? hintStyle;
   CustomTextfield({
     Key? key,
     required this.focusNode,
@@ -23,6 +25,8 @@ class CustomTextfield extends StatefulWidget {
     required this.textInputType,
     required this.hintText,
     required this.textEditingController,
+    this.style,
+    this.hintStyle,
   }) : super(key: key);
 
   @override
@@ -82,10 +86,11 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                   });
                 },
                 child: TextField(
-                  style: ManropeSemiBold.copyWith(
-                    fontSize: 16.sp,
-                    color: AppColors.darkOrange,
-                  ),
+                  style: widget.style ??
+                      ManropeSemiBold.copyWith(
+                        fontSize: 16.sp,
+                        color: AppColors.darkOrange,
+                      ),
                   controller: widget.textEditingController,
                   focusNode: widget.focusNode,
                   cursorColor: AppColors.darkTheme,
@@ -97,10 +102,11 @@ class _CustomTextfieldState extends State<CustomTextfield> {
                   keyboardType: widget.textInputType,
                   decoration: InputDecoration.collapsed(
                     hintText: widget.hintText,
-                    hintStyle: ManropeMedium.copyWith(
-                      fontSize: 16.sp,
-                      color: AppColors.darkTheme,
-                    ),
+                    hintStyle: widget.hintStyle ??
+                        ManropeMedium.copyWith(
+                          fontSize: 16.sp,
+                          color: AppColors.darkTheme,
+                        ),
                   ),
                 ),
               ),

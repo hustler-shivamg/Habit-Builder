@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:habit_builder/screens/main_view.dart';
 import 'package:habit_builder/screens/splash_screen.dart';
 import 'package:habit_builder/values/app_colors.dart';
 
@@ -27,9 +28,12 @@ class MyApp extends StatelessWidget {
             theme: ThemeData().copyWith(
               scaffoldBackgroundColor: Colors.white,
               colorScheme: ThemeData().colorScheme.copyWith(primary: AppColors.darkOrange),
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
             ),
             debugShowCheckedModeBanner: false,
-            home: const SplashScreen(),
+            home: const MainView(),
           );
         },
       ),

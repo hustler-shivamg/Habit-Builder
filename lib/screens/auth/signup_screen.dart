@@ -284,7 +284,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const SignupScreen()));
+                      Navigator.pop(context);
                     },
                     child: RichText(
                       text: TextSpan(

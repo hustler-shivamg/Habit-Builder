@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:habit_builder/screens/auth/forgot_password.dart';
 import 'package:habit_builder/screens/auth/signup_screen.dart';
+import 'package:habit_builder/screens/home_screen.dart';
+import 'package:habit_builder/screens/main_view.dart';
 import 'package:habit_builder/values/app_colors.dart';
 import 'package:habit_builder/values/text_styles.dart';
 import 'package:habit_builder/widgets/custom_submitbutton.dart';
@@ -201,7 +203,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 SizedBox(
                                   height: 21.h,
                                 ),
-                                const CustomSubmitButton(text: "Login"),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (_) => const MainView()));
+                                  },
+                                  child: const CustomSubmitButton(text: "Login"),
+                                ),
                                 SizedBox(
                                   height: 15.h,
                                 ),
